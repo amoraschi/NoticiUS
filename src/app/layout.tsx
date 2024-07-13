@@ -1,12 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans'
-})
+import { inter } from '@/app/fonts'
 
 export const metadata: Metadata = {
   title: 'NoticiUS | Noticias Universidad de Sevilla',

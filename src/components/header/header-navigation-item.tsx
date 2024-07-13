@@ -22,6 +22,7 @@ interface HeaderButtonProps {
 export default function HeaderNavigationItem ({
   label,
   href,
+  icon,
   hrefs
 }: HeaderButtonProps) {
   if (href == null) {
@@ -69,6 +70,15 @@ export default function HeaderNavigationItem ({
           className={navigationMenuTriggerStyle()}
         >
           {label}
+          {
+            icon && (
+              <span
+                className='ml-2 w-4 h-4 text-gray-500'
+              >
+                {icon}
+              </span>
+            )
+          }
         </NavigationMenuLink>
       </Link>
     </NavigationMenuItem>

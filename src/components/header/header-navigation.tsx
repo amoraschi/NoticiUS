@@ -3,7 +3,18 @@ import {
   NavigationMenu,
   NavigationMenuList
 } from '@/components/ui/navigation-menu'
-import { Cog, Diff, DraftingCompass, FlaskConical, Hammer, Laptop, Leaf, Orbit, Pill } from 'lucide-react'
+import { Github } from '@/app/icons'
+import {
+  Cog,
+  Diff,
+  DraftingCompass,
+  FlaskConical,
+  Hammer,
+  Laptop,
+  Leaf,
+  Orbit,
+  Pill
+} from 'lucide-react'
 
 const buttons = [
   {
@@ -63,6 +74,11 @@ const buttons = [
   {
     label: 'Información',
     href: '/info'
+  },
+  {
+    label: 'Repositorio',
+    href: 'https://github.com/amoraschi/NoticiUS',
+    icon: <Github />
   }
 ]
 

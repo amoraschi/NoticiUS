@@ -4,7 +4,7 @@ import { HeaderNavigation } from '@/components/header/header-navigation'
 export default function Header () {
   return (
     <div
-      className='h-min w-11/12 p-4 border-[1px] shadow-md rounded-md bg-white fixed'
+      className='h-32 w-11/12 p-4 shadow-lg rounded-md bg-white fixed'
     >
       <div
         className='flex items-center mb-2'

@@ -1,3 +1,4 @@
+import Front from '@/components/front/front'
 import Header from '@/components/header/header'
 
 export default function Home () {
@@ -11,9 +12,7 @@ export default function Home () {
       }}
     >
       <Header />
-      <div
-        className='h-[200vh]'
-      ></div>
+      <Front />
     </main>
   )
 }
