@@ -12,7 +12,7 @@ export default function Home () {
       }}
     >
       <Header />
-      <Front />
+      {/* <Front /> */}
     </main>
   )
 }
