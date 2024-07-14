@@ -12,6 +12,7 @@ interface HeaderButtonProps {
   label: string
   href?: string
   icon?: React.ReactNode
+  external?: boolean
   hrefs?: Array<{
     label: string
     href: string
@@ -23,6 +24,7 @@ export default function HeaderNavigationItem ({
   label,
   href,
   icon,
+  external,
   hrefs
 }: HeaderButtonProps) {
   if (href == null) {
@@ -63,24 +65,22 @@ export default function HeaderNavigationItem ({
   
   return (
     <NavigationMenuItem>
-      <Link
+      <NavigationMenuLink
+        className={navigationMenuTriggerStyle()}
         href={href}
+        target={external != null ? '_blank' : undefined}
       >
-        <NavigationMenuLink
-          className={navigationMenuTriggerStyle()}
-        >
-          {label}
-          {
-            icon && (
-              <span
-                className='ml-2 w-4 h-4 text-gray-500'
-              >
-                {icon}
-              </span>
-            )
-          }
-        </NavigationMenuLink>
-      </Link>
+        {label}
+        {
+          icon && (
+            <span
+              className='ml-2 w-4 h-4 text-gray-500'
+            >
+              {icon}
+            </span>
+          )
+        }
+      </NavigationMenuLink>
     </NavigationMenuItem>
   )
 }

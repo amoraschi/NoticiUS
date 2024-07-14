@@ -1,13 +1,98 @@
 import Image from 'next/image'
-import { HeaderNavigation } from '@/components/header/header-navigation'
+import {
+  Cog,
+  Diff,
+  DraftingCompass,
+  FlaskConical,
+  Hammer,
+  Laptop,
+  Leaf,
+  Orbit,
+  Pill
+} from 'lucide-react'
+import HeaderNavigationItem from '@/components/header/header-navigation-item'
+import {
+  NavigationMenu,
+  NavigationMenuList
+} from '@/components/ui/navigation-menu'
+import { Github } from '@/app/icons'
+import { cn } from '@/lib/utils'
+import { cursive } from '@/app/fonts'
+
+const buttons = [
+  {
+    label: 'Inicio',
+    href: '/'
+  },
+  {
+    label: 'Facultades',
+    hrefs: [
+      {
+        label: 'Escuela Técnica Superior de Ingeniería',
+        href: '/facultades/etsi',
+        icon: <Cog />
+      },
+      {
+        label: 'Escuela Técnica Superior de Arquitectura',
+        href: '/facultades/etsa',
+        icon: <DraftingCompass />
+      },
+      {
+        label: 'Escuela Técnica Superior de Ingeniería de Edificación',
+        href: '/facultades/etsie',
+        icon: <Hammer />
+      },
+      {
+        label: 'Escuela Técnica Superior de Ingeniería Informática',
+        href: '/facultades/etsii',
+        icon: <Laptop />
+      },
+      {
+        label: 'Facultad de Biología',
+        href: '/facultades/biologia',
+        icon: <Leaf />
+      },
+      {
+        label: 'Facultad de Farmacia',
+        href: '/facultades/farmacia',
+        icon: <Pill />
+      },
+      {
+        label: 'Facultad de Física',
+        href: '/facultades/fisica',
+        icon: <Orbit />
+      },
+      {
+        label: 'Facultad de Matemáticas',
+        href: '/facultades/matematicas',
+        icon: <Diff />
+      },
+      {
+        label: 'Facultad de Química',
+        href: '/facultades/quimica',
+        icon: <FlaskConical />
+      }
+    ]
+  },
+  {
+    label: 'Información',
+    href: '/info'
+  },
+  {
+    label: 'Repositorio',
+    href: 'https://github.com/amoraschi/NoticiUS',
+    icon: <Github />,
+    external: true
+  }
+]
 
 export default function Header () {
   return (
     <div
-      className='h-32 w-11/12 p-4 shadow-lg rounded-md bg-white fixed'
+      className='p-4 shadow-lg rounded-md bg-white w-2/3'
     >
       <div
-        className='flex items-center mb-2'
+        className='flex flex-row gap-2 items-center'
       >
         <Image
           src='/logo.png'
@@ -16,14 +101,14 @@ export default function Header () {
           width={40}
         />
         <div
-          className='flex flex-col mx-2'
+          className='flex flex-col tracking-tighter'
         >
           <span
-            className='text-2xl tracking-tighter'
+            className='text-2xl'
           >
             Notici
             <span
-              className='font-bold text-2xl tracking-tighter text-palette-us'
+              className='text-palette-us font-semibold'
             >
               US
             </span>
@@ -35,7 +120,25 @@ export default function Header () {
           </span>
         </div>
       </div>
-      <HeaderNavigation />
+      <NavigationMenu
+        className='mx-auto my-2'
+      >
+        <NavigationMenuList>
+          {
+            buttons.map((button, index) => (
+              <HeaderNavigationItem
+                key={index}
+                {...button}
+              />
+            ))
+          }
+        </NavigationMenuList>
+      </NavigationMenu>
+      <span
+        className={cn('flex justify-center text-2xl', cursive.className)}
+      >
+        La educación es la mejor defensa contra las noticias falsas.
+      </span>
     </div>
   )
 }

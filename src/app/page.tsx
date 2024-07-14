@@ -4,15 +4,23 @@ import Header from '@/components/header/header'
 export default function Home () {
   return (
     <main
-      className='min-h-screen flex justify-center p-8'
+      className='min-h-screen min-w-screen'
       style={{
         backgroundImage: 'url(/background.jpg)',
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover'
       }}
     >
-      <Header />
-      {/* <Front /> */}
+      <div
+        className='flex justify-center py-8'
+      >
+        <Header />
+      </div>
+      <div
+        className='flex flex-grow justify-center'
+      >
+        <Front />
+      </div>
     </main>
   )
 }
