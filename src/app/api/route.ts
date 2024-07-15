@@ -1,7 +1,11 @@
 import { parse } from 'node-html-parser'
 
-export async function GET () {
-  const res = await fetch('https://www.us.es/actualidad-de-la-us')
+const lastPageRegex = /page=(\d+)/
+
+export async function GET (request: Request) {
+  const url = new URL(request.url)
+  const page = url.searchParams.get('page') ?? '0'
+  const res = await fetch(`https://www.us.es/actualidad-de-la-us?page=${page}`)
 
   if (!res.ok) {
     return Response.error()
@@ -20,7 +24,12 @@ export async function GET () {
     }
   })
 
+  const lastPageHref = html.querySelector('.pager__item--last > a')?.getAttribute('href') ?? ''
+  const lastPageMatch = lastPageHref.match(lastPageRegex)
+  const last = lastPageMatch ? parseInt(lastPageMatch[1]) : 0
+
   return Response.json({
-    news: news
+    news,
+    last
   })
 }

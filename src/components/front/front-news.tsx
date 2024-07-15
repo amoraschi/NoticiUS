@@ -35,7 +35,7 @@ export default function FrontNews ({
         asChild
       >
         <li
-          className='relative overflow-hidden cursor-pointer first:col-span-2 first:row-span-2 h-fit hover:shadow-lg transition duration-300'
+          className='relative overflow-hidden cursor-pointer first:col-span-2 first:row-span-2 h-fit'
         >
           <Image
             src={image}
