@@ -1,3 +1,4 @@
+import { RefreshCw } from 'lucide-react'
 import {
   Pagination,
   PaginationContent,
@@ -12,12 +13,14 @@ interface FrontPaginationProps {
   page: number
   setPage: (page: number) => void
   last: number
+  loading: boolean
 }
 
 export default function FrontPagination ({
   page,
   setPage,
-  last
+  last,
+  loading
 }: FrontPaginationProps) {
   const goPrevious = () => {
     if (page > 0) {
@@ -45,7 +48,16 @@ export default function FrontPagination ({
             onClick={() => setPage(page)}
             isActive
           >
-            {page + 1}
+            {
+              loading ? (
+                <RefreshCw
+                  className='w-4 h-4 animate-spin'
+                  strokeWidth={1}
+                />
+              ) : (
+                page + 1
+              )
+            }
           </PaginationLink>
         </PaginationItem>
         {

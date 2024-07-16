@@ -99,6 +99,7 @@ export default function Header () {
           alt='Header'
           height={40}
           width={40}
+          className='w-[40px] h-auto'
         />
         <div
           className='flex flex-col tracking-tighter'

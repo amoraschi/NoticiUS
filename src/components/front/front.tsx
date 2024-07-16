@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { CloudDownload } from 'lucide-react'
+import { RefreshCw } from 'lucide-react'
 import { firstUpperCase } from '@/lib/utils'
 import FrontNews from '@/components/front/front-news'
 import FrontPagination from '@/components/front/front-pagination'
@@ -10,6 +10,7 @@ export default function Front () {
   const [news, setNews] = useState<any[]>([])
   const [page, setPage] = useState(0)
   const [maxPage, setMaxPage] = useState(0)
+  const [loading, setLoading] = useState(false)
   const weekDay = firstUpperCase(new Date().toLocaleDateString('es-ES', {
     weekday: 'long'
   }))
@@ -24,6 +25,7 @@ export default function Front () {
     const abortController = new AbortController()
     const fetchNews = async () => {
       try {
+        setLoading(true)
         const res = await fetch(`/api?page=${page}`, {
           signal: abortController.signal
         })
@@ -38,17 +40,19 @@ export default function Front () {
           return
         }
 
-        console.log(data)
         setNews(data.news)
         setMaxPage(data.last)
+        setLoading(false)
       } catch (err) {
         console.error(err)
+        setLoading(false)
       }
     }
 
     fetchNews()
 
     return () => {
+      setLoading(false)
       abortController.abort('Unmounted')
     }
   }, [page])
@@ -86,8 +90,8 @@ export default function Front () {
             }
           </ul>
         ) : (
-          <CloudDownload
-            className='w-8 h-8 my-8 animate-bounce text-palette-us'
+          <RefreshCw
+            className='w-8 h-8 my-8 animate-spin'
             strokeWidth={1}
           />
         )
@@ -96,6 +100,7 @@ export default function Front () {
         page={page}
         setPage={setPage}
         last={maxPage}
+        loading={loading}
       />
     </div>
   )
