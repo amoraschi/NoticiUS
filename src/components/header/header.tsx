@@ -89,7 +89,7 @@ const buttons = [
 export default function Header () {
   return (
     <div
-      className='p-4 shadow-lg rounded-md bg-white w-2/3'
+      className='p-4 shadow-lg rounded-md bg-white w-5/6'
     >
       <div
         className='flex flex-row gap-2 items-center'

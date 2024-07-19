@@ -59,7 +59,7 @@ export default function Front () {
 
   return (
     <div
-      className='flex items-center flex-col bg-white rounded-md w-2/3 mb-2 p-4'
+      className='flex items-center flex-col bg-white rounded-md w-5/6 mb-2 p-4'
     >
       <div
         className='pb-4 w-full'
@@ -78,7 +78,7 @@ export default function Front () {
       {
         news.length > 0 ? (
           <ul
-            className='grid grid-cols-4 grid-rows-2 px-4 pb-4'
+            className='grid grid-cols-4 grid-rows-2 pb-4 w-full'
           >
             {
               news.map((n, i) => (

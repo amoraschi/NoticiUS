@@ -36,6 +36,7 @@ export default function FrontNews ({
       >
         <li
           className='relative overflow-hidden cursor-pointer first:col-span-2 first:row-span-2 h-fit'
+          title={title}
         >
           <Image
             src={image}
